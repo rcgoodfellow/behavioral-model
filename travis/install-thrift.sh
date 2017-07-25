@@ -1,16 +1,25 @@
-#!/bin/sh
+#!/bin/bash
 
 THIS_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $THIS_DIR/common.sh
 
-check_lib libthrift libthrift-0.9.2
+version=0.10.0
+dir=thrift-$version
+tarball=$dir.tar.gz
+
+check_lib libthrift libthrift-$version
+
 
 set -e
-wget http://archive.apache.org/dist/thrift/0.9.2/thrift-0.9.2.tar.gz
-tar -xzvf thrift-0.9.2.tar.gz
-cd thrift-0.9.2
-./configure --with-cpp=yes --with-c_glib=no --with-java=no --with-ruby=no --with-erlang=no --with-go=no --with-nodejs=no
-make -j2 && sudo make install
+if [[ ! -f $tarball ]]; then
+  wget http://archive.apache.org/dist/thrift/$version/$tarball
+fi
+if [[ ! -d $dir ]]; then
+  tar -xzvf $tarball
+fi
+cd $dir
+./configure --with-cpp=yes --with-c_glib=no --with-java=no --with-ruby=no --with-erlang=no --with-go=no --with-nodejs=no --with-qt4=no --with-qt5=no
+make -j`nproc` && sudo make install
 cd lib/py
 sudo python setup.py install
 cd ../../..

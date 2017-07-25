@@ -1,4 +1,12 @@
-#!/bin/sh
+#!/bin/bash
+
+ssllib=libssl-dev
+lsb_name=`lsb_release -c`
+if [[ $lsb_name == *"stretch"* ]]; then
+  ssllib=libssl1.0-dev
+fi
+
+
 set -e
 sudo apt-get install -y \
     automake \
@@ -18,7 +26,7 @@ sudo apt-get install -y \
     bison \
     pkg-config \
     g++ \
-    libssl-dev \
+    libssl1.0-dev \
     mktemp \
     libffi-dev \
     python-dev \

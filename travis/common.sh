@@ -20,12 +20,12 @@ function quit {
 }
 
 function check_lib {
-    ldconfig -p | grep $2 &> /dev/null
+    sudo ldconfig -p | grep $2 &> /dev/null
     if [ $? == 0 ]; then
         echo "$2 found"
         quit
     fi
-    ldconfig -p | grep $1 &> /dev/null
+    sudo ldconfig -p | grep $1 &> /dev/null
     if [ $? == 0 ]; then
         echo "a version of $1 was found, but not $2"
         echo "you may experience issues when using a different version"
