@@ -26,7 +26,7 @@ sudo apt-get install -y \
     bison \
     pkg-config \
     g++ \
-    libssl1.0-dev \
+    $ssllib \
     mktemp \
     libffi-dev \
     python-dev \
