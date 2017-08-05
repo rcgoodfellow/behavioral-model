@@ -427,7 +427,7 @@ def recv_msgs(socket_addr, client):
     json_init(client)
 
     sub = nnpy.Socket(nnpy.AF_SP, nnpy.SUB)
-    sub.connect(socket_addr)
+    sub.connect(socket_addr.encode('ascii', 'replace'))
     sub.setsockopt(nnpy.SUB, nnpy.SUB_SUBSCRIBE, '')
 
     while True:

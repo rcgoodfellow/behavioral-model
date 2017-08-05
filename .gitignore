@@ -36,6 +36,12 @@ lib*
 # Emacs
 *~
 
+# Vim
+*.sw*
+
+# temp files
+tmp.??????????
+
 *.pcap
 
 # Tags
@@ -43,6 +49,7 @@ GPATH
 GRTAGS
 GSYMS
 GTAGS
+tags
 
 tools/bm_runtime/
 

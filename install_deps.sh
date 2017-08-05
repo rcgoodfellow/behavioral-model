@@ -21,6 +21,8 @@ sudo apt-get install -y \
     libboost-filesystem-dev \
     libboost-thread-dev \
     libevent-dev \
+    libpython-dev \
+    libpython3-dev \
     libtool \
     flex \
     bison \
